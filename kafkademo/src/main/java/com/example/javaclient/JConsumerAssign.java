@@ -3,6 +3,7 @@
  */
 package com.example.javaclient;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,21 +13,17 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.TopicPartition;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.example.KafkaProperties;
 
 /**
  * 订阅特定分区,不会负载均衡,
- * Created by cuilei05 on 16/3/15.
+ * @author 71972
  */
 public class JConsumerAssign extends BaseConsumer {
-    private static final Logger LOGGER = LoggerFactory.getLogger(JConsumerAssign.class);
-
     public static void main(String[] args) {
         Properties props = new Properties();
-        props.put("bootstrap.servers", "localhost:9092");
+        props.put("bootstrap.servers", "localhost:9082");
         props.put("group.id", "test");
         props.put("enable.auto.commit", "false");
         props.put("auto.commit.interval.ms", "1000");
@@ -58,7 +55,7 @@ public class JConsumerAssign extends BaseConsumer {
         List<ConsumerRecord<String, String>> buffer = new ArrayList<>();
         try {
             while (true) {
-                ConsumerRecords<String, String> records = consumer.poll(120);
+                ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(120));
                 for (ConsumerRecord<String, String> record : records) {
                     buffer.add(record);
                 }

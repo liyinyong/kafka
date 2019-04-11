@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Created by cuilei05 on 16/3/15.
+ * @author 71972
  */
 public class BaseConsumer {
 
