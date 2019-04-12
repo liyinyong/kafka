@@ -29,7 +29,7 @@ public class JProducer {
         props.put("bootstrap.servers", "localhost:9082");
         props.put("acks", "all");
         props.put("retries", 0);
-        props.put("batch.size", 1);
+        props.put("batch.size", 163884);
         // props.put("batch.size", 16384);
         props.put("linger.ms", 1);
         props.put("partitioner.class", "com.example.javaclient.JPartitioner");
